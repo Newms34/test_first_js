@@ -8,20 +8,23 @@ function repeat (toRepeat, numRepeats) {
 	return outStr;
 }
 
-function join (myArr,sep) {
+function join (myArr , sep) {
+
 	var joinStr="";//This is what's gonna get spat out at the end.
-	sep = sep.toString();//convert the seperator thingy to a string, in case it's like a number, or some wool, or yarn (i.e., not string)
+	// var mySep = sep.toString() || "";//convert the seperator thingy to a string, in case it's like a number, or some wool, or yarn (i.e., not string)
 	for (var n=0; n<myArr.length;n++) {
-		//this loop combines stuff. Like a giant JavaScript Voltron or something
-		//the following 'if' is designed to prevent the separator from sticking itself on the end of the 
-		//string. So we get 'apple/banana/cherry', not 'apple/banana/cherry/'
-		if (n==myArr.length-1) {
-			joinStr += myArr[n]
+		joinStr += myArr[n];
+		if (n == myArr.length-1) {
+			
+		}
+		else if (sep){
+			joinStr +=sep;
 		}
 		else {
-			joinStr += myArr[n]+sep;
+			
 		}
 	} 
+	return joinStr;
 }
 
 function sum (sumTzu) {
@@ -34,6 +37,7 @@ function sum (sumTzu) {
 
 function paramify(hashBrowns) {
 	//variables in Latin. Because why not.
+	//protip: Don't program when hungry.
 	var narraturi = "";
 	var n=0;//counter! this one sees how many we have
 	var c=0;
@@ -46,11 +50,11 @@ function paramify(hashBrowns) {
 	for (c=0;c<ordinati.length; c++){
 			if (c < ordinati.length-1)
 				{
-					narraturi += ordinati[c] + "=" + hash[ordinati[c]] + "&";
+					narraturi += ordinati[c] + "=" + hashBrowns[ordinati[c]] + "&";
 				}
 			else
 				{
-					narraturi += ordinati[c] + "=" + hash[ordinati[c]];
+					narraturi += ordinati[c] + "=" + hashBrowns[ordinati[c]];
 				}
 	}
 	return narraturi;
@@ -59,22 +63,22 @@ function paramify(hashBrowns) {
 function factorial (numerus){
 	//so, why DOES 0! = 1?
 	var numerationes = 1;//because, duh, if we start off with zero, we'd end with zero.
-	for (var iste = 1; iste<numerus; iste++){
+	for (var iste = 1; iste<numerus+1; iste++){
 		numerationes = numerationes * iste;
 	}
 	return numerationes;
 }
 
 function concat_string (){
-	var theArray = [];
-	var joinedStr = "";
+	var hicOrdo = [];
+	var epistulaeIunctae = "";
 	for (var i = 0; i<arguments.length; i++)
 		{
-			theArray.push(arguments[i]);
+			hicOrdo.push(arguments[i]);
 		}
-	for (var i = 0; i<theArray.length; i++)
+	for (var i = 0; i<hicOrdo.length; i++)
 		{
-			joinedStr += theArray[i];
+			epistulaeIunctae += hicOrdo[i];
 		}
-	return joinedStr;
+	return epistulaeIunctae;
 }
