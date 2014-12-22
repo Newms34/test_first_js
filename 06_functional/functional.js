@@ -31,3 +31,66 @@ function filter(wat,watDo){
 	}
 	return filtered;
 }
+
+function contains (arr,toFind) {
+	var found=false;
+	var dat;
+	for (dat in arr) {
+		(arr[dat]==toFind)? found=true: found=found; 
+	}
+	return found;
+}
+
+function reduce(arr,start,func) {
+	var  result = arr[start];
+	for (var n = start+1; n < arr.length; n++) {
+		result = func(result, arr[n]);
+	}
+	return result;
+}
+
+function countWordsInReduce (arr1,arr2){
+	return arr1.split(' ').length + arr2.split(' ').length;
+}
+
+function sum(arr){
+	var addMe = function(one,two) {
+		return one+two;
+	};
+	return reduce (arr,0,addMe);
+}
+
+function every(arr, func) {
+	//returns true ONLY if everything is permitted. Uh, I mean true.
+	var cantHandle=true;
+	for (var i=0; i<arr.length;i++){
+		if(!func(arr[i])){
+			cantHandle=false;//we want the truth!
+		}
+	}
+	return cantHandle;
+}
+
+
+function any(arr, func) {
+	//kinda the opposite of the previous.
+	//Notice that all we did here to be different is flip the 'true' and 'false' assignments, and change the 'if'
+	var cantHandle=false;
+	var func = func || function (e) {return e};//because sometimes we're not given a function.
+	for (var i=0; i<arr.length;i++){
+		if(func(arr[i])){
+			cantHandle=true;
+		}
+	}
+	return cantHandle;
+}
+
+function once(func){
+	var done=false;
+	return function(){
+		if (!done){
+			func();
+			done=true;
+		}
+	}
+}
